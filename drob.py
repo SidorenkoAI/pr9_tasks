@@ -42,8 +42,8 @@ class drob:
     def __repr__(self):
         return str(self)
 
-    def nod(self, a, b):
+    def nod(self, s, b):
         if b == 0:
-            return a
+            return s
         else:
-             return self.nod(b, a % b)
+             return self.nod(b, s % b)
