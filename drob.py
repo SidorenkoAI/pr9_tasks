@@ -9,9 +9,9 @@ class drob:
         return f"{self.nom} / {self.denom}"
 
     def __add__(self, other):
-        n = self.nom * other.denom + self.denom * other.nom
-        d = self.denom * other.denom
-        return drob(n, d)
+        nom = self.nom * other.denom + self.denom * other.nom
+        denom = self.denom * other.denom
+        return drob(nom, denom)
 
     def __sub__(self, other):
         if self.denom == other.denom:
