@@ -7,6 +7,3 @@ class task1:
             if i%2==0:
                 spis.append(i)
         return f'Четные числа из списка: {spis}'
-spis=task1()
-spis2=list(map(int,input().split()))
-print(spis.giveEvenNumbers(spis2))

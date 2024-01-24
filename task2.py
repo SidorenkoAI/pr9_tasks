@@ -9,6 +9,3 @@ class task2:
             else:
                 k=False
         return f'Монотонное возрастание чисел: {k}'
-spis=task2()
-spis2=list(map(int,input().split()))
-print(spis.greater(spis2))
