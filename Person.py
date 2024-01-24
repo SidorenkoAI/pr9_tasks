@@ -15,22 +15,29 @@ class Person:
     но не было ни одного изменения фамилии, верните "first_name with unknown last name".
     '''
     def __init__(self):
-        self.name = #подумать, какая структура для хранения данных лучше подойдет
+      self.history = dict()
 
     def ChangeFirstName(self, year, first_name):
-    '''
-    добавить факт изменения имени на first_name в год year
-    '''
+      if int(year) not in self.history.keys():
+        self.history[int(year)] = {'first_name': first_name}
+      else:
+        self.history[int(year)]['first_name'] = first_name
 
     def ChangeLastName(self, year, last_name):
-    '''
-    добавить факт изменения фамилии на last_name в год year
-    '''
-
+      if int(year) not in self.history.keys():
+        self.history[int(year)] = {'last_name': last_name}
+      else:
+        self.history[int(year)]['last_name'] = last_name
+    
     def GetFullName(self, year):
-  '''
-    получить имя и фамилию по состоянию на конец года year
-    '''
-
-
-
+      if int(year) in self.history.keys():
+         if list(self.history[int(year)].keys()) == ['first_name', 'last_name']:
+            return f'{self.history[int(year)]["first_name"]} {self.history[int(year)]["last_name"]}'
+         elif list(self.history[int(year)].keys()) == ['first_name']:
+            return f'{self.history[int(year)]["first_name"]} with unknown last name'
+         elif list(self.history[int(year)].keys()) == ['last_name']:
+            return f'{self.history[int(year)]["last_name"]} with unknown first name'
+      elif min(list(self.history.keys())) > year:
+        return 'Incognito'
+      else:
+         return 'в этот год записи нет, но есть в предыдущих годах. не успел реализовать :('
