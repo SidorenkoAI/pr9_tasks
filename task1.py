@@ -2,7 +2,10 @@ class task1:
     def __init__(self):
         pass
     def giveEvenNumbers(self, arg):
-        '''
-        :param arg: список целых чисел
-        :return: список четных чисел
-        '''
+        lst=[]
+        for i in arg:
+            if i%2==0:
+                lst.append(i)
+        return lst
+
+
