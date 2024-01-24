@@ -8,4 +8,4 @@ class task2:
                 k=True
             else:
                 k=False
-        return f'Монотонное возрастание чисел: {k}'
+        return k
