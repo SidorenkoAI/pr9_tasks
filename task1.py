@@ -6,4 +6,5 @@ class task1:
         for i in arg:
             if i%2 == 0:
                 res.append(i)
+                
         return res

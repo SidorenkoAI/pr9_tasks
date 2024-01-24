@@ -13,6 +13,7 @@ class User:
     def __init__(self):
         self.id = next(User.userId)
         self.balance = 0
+
     def __str__(self):
         return f'User ID {self.id}'
 

@@ -4,6 +4,7 @@ class task2:
 
     def greater(self, arg: list):
         arg2 = arg.copy()
+        
         arg2.sort()
 
         return arg == arg2
