@@ -8,5 +8,5 @@ class task1:
                 spis.append(i)
         return f'Четные числа из списка: {spis}'
 spis=task1()
-spis2=[1,2,3,4]
+spis2=list(map(int,input().split()))
 print(spis.giveEvenNumbers(spis2))
