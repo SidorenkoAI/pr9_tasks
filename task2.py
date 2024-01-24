@@ -1,10 +1,11 @@
 class task2:
     def __init__(self):
         pass
+    k = False
     def greater(self, arg):
-        '''
-        :param arg: список целых чисел
-        :return: Если arg монотонно возрастает
-        (то есть каждый элемент больше предыдущего),
-        то вернуть True, иначе False
-        '''
+        for i in range(1, len(arg)):
+            if arg[i-1] < arg[i]:
+                k = True
+            else:
+                k = False
+        return k
