@@ -17,8 +17,10 @@ class User:
         return f'User ID {self.id}'
 
     def addMoney(self, nom, count):
-        '''
-        :param nom: номинал
-        :param count: количество купюр
-        метод должен увеличить баланс пользователя
-        '''
+        self.balance += nom * count
+    
+    def addMoney(self, cash):
+        self.balance += cash
+
+    def __lt__(self, other):
+        return self.balance < other.balance
