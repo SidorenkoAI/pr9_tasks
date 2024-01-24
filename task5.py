@@ -1,7 +1,7 @@
 def MoveStrings(s, d):
     for i in s:
-        for j in d:
-            j+=i
+        d.append(i)
     s.clear()
     return s, d
 
+print(MoveStrings(["s", "aa", "a", "1111"], ["d", "bb", "b"]))
