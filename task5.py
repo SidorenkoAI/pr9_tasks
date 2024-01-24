@@ -8,3 +8,6 @@ def MoveStrings(s, d):
     После выполнения функции список s должен оказаться пустым.
     '''
 
+    for i in range(len(s)):
+        d.append(s[0])
+        s.pop(0)
