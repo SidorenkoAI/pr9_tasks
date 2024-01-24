@@ -15,10 +15,13 @@ class User:
         self.balance = 0
     def __str__(self):
         return f'User ID {self.id}'
+    def addMoney(self, cash):
+        self.balance += cash
+    def __gt__(self, other):
+        return self.balance > other.balance
 
-    def addMoney(self, nom, count):
-        '''
-        :param nom: номинал
-        :param count: количество купюр
-        метод должен увеличить баланс пользователя
-        '''
+users = [User(), User(), User(), User(), User(), User()]
+import random
+for user in users:
+    user.addMoney(random.randint(0, 100000))
+print(max(users))
