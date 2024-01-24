@@ -5,7 +5,8 @@ class task2:
         G = arg[0]
         isGreater = True
         for i in arg:
-            if i < G:
+            print(i, G)
+            if i <= G and i != arg[0]:
                 isGreater = False
                 break
             else:
@@ -14,3 +15,5 @@ class task2:
             return True
         else:
             return False
+k = task2()
+print(k.greater([1,3,5,7]))
