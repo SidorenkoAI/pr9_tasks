@@ -1,24 +1,19 @@
 import itertools
-class User:
-    '''
-    Модифицировать класс таким образом, чтобы для объектов
-    работал следующий код:
-    users = [User(), User(), User(), User(), User(), User()]
-    import random
-    for user in users:
-        user.addMoney(random.randint(0, 100000))
-    print(max(users))
-    '''
-    userId = itertools.count()
-    def __init__(self):
-        self.id = next(User.userId)
-        self.balance = 0
-    def __str__(self):
-        return f'User ID {self.id}'
+class user():
+    userID = itertools.count()
 
-    def addMoney(self, nom, count):
-        '''
-        :param nom: номинал
-        :param count: количество купюр
-        метод должен увеличить баланс пользователя
-        '''
+    def __init__(self):
+        self.balance = 0
+        self.id = next(user.userID)
+
+    def __str__(self):
+        return f"user{self.id}: {self.balance}rub"
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __gt__(self, other):
+        return self.balance > other.balance
+
+    def addMoney(self, cash):
+        self.balance += cash
