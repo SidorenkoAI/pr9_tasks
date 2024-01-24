@@ -1,31 +1,54 @@
-class Drob:
-    '''
-    1. Конструктор по умолчанию должен создавать дробь с числителем 0 и знаменателем 1.
-    2. При конструировании объека класса Drob с параметрами p и q
-    должно выполняться сокращение дроби p/q (здесь вам может пригодиться решение задачи «Наибольший общий делитель»).
-    3. Если дробь p/q отрицательная, то объект Drob(p, q) должен иметь
-    отрицательный числитель и положительный знаменатель.
-    4. Если дробь p/q положительная, то объект Drob(p, q) должен иметь положительные
-    числитель и знаменатель (обратите внимание на случай Drob(-2, -3)).
-    5. Если числитель дроби равен нулю, то знаменатель должен быть равен 1.
-    6. При попыте создать объект со знаменателем равным 0, должно генерироваться исключение
-    TypeError с соответствующим сообщением
-    7. Реализовать перегрузку опреаторов +, -, *, /, чтобы можно было работать с дробями
-    естественным образом:
-    a = Drob(1,2)
-    b = Drob(5,6)
-    c = Drob()
-    c = a + b
-    8. Со списком дробей должны работать стандартный метод сортировки, функция max():
-    lst = [Drob(1,3), Drob(4,1), Drob(6,4)]
-    lst.sort()
-    print(max(lst))
-    '''
-    def __init__(self):
-        self.num =
-        self.denom =
+class drob:
+    def __init__(self, n = 0, d = 1):
+        if d == 0:
+            raise TypeError ("Знаменатель не может быть равен 0!")
+        self.nom = int(n / self.nod(n,d))
+        self.denom = int(d / self.nod(n,d))
+
     def __str__(self):
-        return f'{self.__num}/{self.__denom}'
+        return f"{self.nom} / {self.denom}"
+
+    def __add__(self, other):
+        n = self.nom * other.denom + self.denom * other.nom
+        d = self.denom * other.denom
+        return drob(n, d)
+
+    def __sub__(self, other):
+        if self.denom == other.denom:
+            result_numerator = self.nom - other.nom
+            result_denominator = self.denom
+        else:
+            result_numerator = (self.nom * other.denom) - (other.nom * self.denom)
+            result_denominator = self.denom * other.denom
+
+        return drob(result_numerator, result_denominator)
+
+    def __mul__(self, other):
+        result_numerator = self.nom * other.nom
+        result_denominator = self.denom * other.denom
+        return drob(result_numerator, result_denominator)
+
+    def __truediv__(self, other):
+        result_denominator = self.nom * other.denom
+        result_numerator = self.denom * other.nom
+        return drob(result_numerator, result_denominator)
+
+    def __lt__(self, other):
+        common_denom = self.nod(self.denom, other.denom)
+        self_numerator = self.nom * (common_denom // self.denom)
+        other_numerator = other.nom * (common_denom // other.denom)
+        return self_numerator < other_numerator
+
     def __repr__(self):
         return str(self)
+
+    def nod(self, a, b):
+        if b == 0:
+            return a
+        else:
+             return self.nod(b, a % b)
+
+c = drob(1, 0)
+print(c)
+
 
