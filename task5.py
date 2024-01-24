@@ -1,6 +1,5 @@
-def MoveStrings(s, d):
+def MoveStrings(s: list, d):
     for i in s:
         d.append(i)
-    for i in range(len(s)):
-        s.pop(0)
+    s.clear()
 
