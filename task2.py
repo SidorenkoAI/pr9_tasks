@@ -3,13 +3,14 @@ class task2:
         pass
     def greater(self, arg):
         G = arg[0]
-        isGreater = False
+        isGreater = True
         for i in arg:
             if i < G:
-                isGreater = True
+                isGreater = False
+                break
+            else:
+                G = i
         if isGreater:
-            return('Yes')
+            return True
         else:
-            return('No')
-Item = task2()
-
+            return False
