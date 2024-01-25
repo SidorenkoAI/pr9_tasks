@@ -12,7 +12,7 @@ class Person:
     Если к данному году случилось изменение фамилии,
     но не было ни одного изменения имени, верните "last_name with unknown first name".
     Если к данному году случилось изменение имени,
-    но не было ни одного изменения фамилии, верните "first_name with unknown last name".
+    но не было ни одного изменения фамилии, верните " first_name with unknown last name".
     '''
     def __init__(self):
       self.history = dict()
