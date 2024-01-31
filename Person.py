@@ -25,8 +25,8 @@ class Person:
         if iFN==True and iLN==True:
             return f'{self.name[year]} {self.firstname[year]}'
         elif iFN==True and iLN==False:
-            return 'last_name with unknown first name'
+            return f'{self.name[year]} with unknown first name'
         elif iFN==False and iLN==True:
-            return 'first_name with unknown last name'
+            return f'{self.firstname[year]} with unknown last name'
         else:
             return 'Incognito'
