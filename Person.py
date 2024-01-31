@@ -1,6 +1,6 @@
 class Person:
 
-    def init(self):
+    def __init__(self):
         self.name_changes = {}
         self.lastname_changes = {}
 
