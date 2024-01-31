@@ -18,9 +18,9 @@ class Hero:
         self.team = TeamNumber
         self.level = 0
     def __str__(self):
-        return f"{self.id} {self.team}"
+        return f"герой ID {self.id} из команды {self.team}"
     def __repr__(self):
-        return f"{self.id} {self.team}"
+        return self.__str__()
     def LevelChange(self):
         self.level += 1
 
@@ -40,9 +40,12 @@ class Solder:
 # a = [Hero('12'), Hero('13'), Hero('14')]
 # print(a)
 team = int(input())
-team_lst = {}
+team_data = {}
 while team:
     hero = Hero(str(team))
-    team_lst[hero] = Solder(str(random.randint(2, 10)))
+    solders = []
+    for i in range(random.randint(2, 10)):
+        solders.append(Solder(hero.team))
+    team_data[team] = solders
     team -= 1
-print(list(team_lst.values()))
+print(list(team_data.values()))
