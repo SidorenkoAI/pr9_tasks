@@ -18,11 +18,12 @@ class Hero:
         self.team = TeamNumber
         self.level = 0
     def __str__(self):
-        return f"герой ID {self.id} из команды {self.team}"
+        return f"Герой ID {self.id} из команды {self.team}"
     def __repr__(self):
         return self.__str__()
-    def LevelChange(self):
-        self.level += 1
+    def LevelChange(self, num):
+        self.level += num
+        return self.level
 
 class Solder:
     SolderID = itertools.count()
@@ -34,18 +35,42 @@ class Solder:
         return f"Солдат ID {self.id} из команды {self.team}"
     def __repr__(self):
         return self.__str__()
-    def follow_to_hero(self, hero = Hero()):
+    def follow_to_hero(self, hero: Hero):
         pass
 
-# a = [Hero('12'), Hero('13'), Hero('14')]
-# print(a)
-team = int(input())
-team_data = {}
-while team:
-    hero = Hero(str(team))
-    solders = []
-    for i in range(random.randint(2, 10)):
-        solders.append(Solder(hero.team))
-    team_data[team] = solders
-    team -= 1
-print(list(team_data.values()))
+def create_teams():
+    team = int(input())
+    team_data = {}
+    Level_Lst = []
+    while team:
+        hero = Hero(str(team))
+        solders = []
+        for i in range(random.randint(2, 10)):
+            solders.append(Solder(hero.team))
+        team_data[hero] = solders
+        Level_Lst.append(hero.LevelChange(len(solders)))
+        team -= 1
+    return team_data, Level_Lst
+
+def menu():
+    print("1: start game")
+    print("0: exit")
+
+def game_support():
+    print("/OutputMaxLevelTeam")
+    print("/StartGame")
+    print("/FollowToHero --NumHero")
+
+while True:
+    try:
+        menu()
+        userInput = int(input())
+        if userInput == 0:
+            ValueError()
+        elif userInput == 1:
+            game_support()
+            Action = input()
+            if Action == "/OutputMaxLevelTeam":
+                print("Максимальный уровень Героя: ", max(create_teams()[1]))
+    except ValueError():
+        break
