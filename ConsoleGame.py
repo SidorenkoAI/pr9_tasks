@@ -1,3 +1,4 @@
+import itertools
 '''
 В некой игре-стратегии есть солдаты и герои. У всех есть свойство, содержащее
 уникальный номер объекта, и свойство, в котором хранится принадлежность команде. У
@@ -8,5 +9,24 @@
 Солдаты разных команд добавляются в разные списки.
 Измеряется длина списков солдат противоборствующих команд и выводится на экран.
 У героя, принадлежащего команде с более длинным списком, увеличивается уровень.
-
 '''
+
+class Hero:
+    HeroID = itertools.count()
+    def __init__(self, TeamNumber = "Red"):
+        self.id = Hero.HeroID
+        self.team = TeamNumber
+        self.level = 0
+    def LevelChange(self):
+        self.level += 1
+
+class Solder:
+    SolderID = itertools.count()
+
+    def __init__(self, TeamNumber="Red"):
+        self.id = Solder.SolderID
+        self.team = TeamNumber
+
+    def follow_to_hero(self, hero = Hero()):
+        pass
+
