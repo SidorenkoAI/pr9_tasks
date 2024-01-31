@@ -12,21 +12,19 @@ class Person:
     def GetFullName(self, year):
         iFN=0
         iLN=0
-        fkeys=self.firstname.keys()
-        lkeys=self.name.keys()
-        if year in fkeys:
+        if year in self.firstname:
             iFN=True
         else:
             iFN=False
-        if year in lkeys:
+        if year in self.name:
             iLN=True
         else:
             iLN=False
         if iFN==True and iLN==True:
             return f'{self.name[year]} {self.firstname[year]}'
         elif iFN==True and iLN==False:
-            return f'{self.name[year]} with unknown first name'
+            return f'{self.firstname[year]} with unknown first name'
         elif iFN==False and iLN==True:
-            return f'{self.firstname[year]} with unknown last name'
+            return f'{self.name[year]} with unknown last name'
         else:
             return 'Incognito'
