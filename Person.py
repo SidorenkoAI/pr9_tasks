@@ -1,36 +1,32 @@
 class Person:
-    '''
-    Реализуйте класс для человека, поддерживающий историю изменений человеком своих фамилии и имени.
-    Считайте, что в каждый год может произойти не более одного изменения
-    фамилии и не более одного изменения имени.
-    При этом с течением времени могут открываться всё новые факты из прошлого человека,
-    поэтому года́ в последовательных вызовах методов *ChangeLastName* и *ChangeFirstName*
-    не обязаны возрастать.
-    Строка, возвращаемая методом *GetFullName*, должна содержать разделённые одним пробелом
-     имя и фамилию человека по состоянию на конец данного года.
-    Если к данному году не случилось ни одного изменения фамилии и имени, верните строку "Incognito".
-    Если к данному году случилось изменение фамилии,
-    но не было ни одного изменения имени, верните "last_name with unknown first name".
-    Если к данному году случилось изменение имени,
-    но не было ни одного изменения фамилии, верните "first_name with unknown last name".
-    '''
     def __init__(self):
-        self.name = #подумать, какая структура для хранения данных лучше подойдет
-
+        self.name = {}
+        self.firstname = {}
+    def __str__(self):
+        return f'{self.name}, {self.firstname}'
     def ChangeFirstName(self, year, first_name):
-    '''
-    добавить факт изменения имени на first_name в год year
-    '''
-
+        self.firstname[year]=first_name
     def ChangeLastName(self, year, last_name):
-    '''
-    добавить факт изменения фамилии на last_name в год year
-    '''
+        self.name[year]=last_name
 
     def GetFullName(self, year):
-  '''
-    получить имя и фамилию по состоянию на конец года year
-    '''
-
-
-
+        iFN=0
+        iLN=0
+        fkeys=self.firstname.keys()
+        lkeys=self.name.keys()
+        if year in fkeys:
+            iFN=True
+        else:
+            iFN=False
+        if year in lkeys:
+            iLN=True
+        else:
+            iLN=False
+        if iFN==True and iLN==True:
+            return f'{self.name[year]} {self.firstname[year]}'
+        elif iFN==True and iLN==False:
+            return 'last_name with unknown first name'
+        elif iFN==False and iLN==True:
+            return 'first_name with unknown last name'
+        else:
+            return 'Incognito'
